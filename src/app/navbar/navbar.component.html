@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">WETAP ADMIN</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation" 
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/"
+            >Home <span class="sr-only">(current)</span></a
+          >
+        </li>
+        <ng-container *ngIf="adminUser; else anonymousUser">
+          <ng-container *ngIf="adminUser.isAdmin">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/candidate">Candidates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/question/Paper">Question Paper</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/manage/bulk-upload">Bulk Upload</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/manage/app">Manage App</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/manage/manage-scheme"
+                >Manage Scheme</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="logout()" routerLink="">Logout</a>
+            </li>
+  
+            <div class="form-check">
+              <!-- <input
+                style="color: white; margin-top: 15px"
+                class="form-check-input"
+                (change)="updateServerLocation()"
+                type="checkbox"
+                name="isMockTest"
+                id="flexCheckDefault"
+              />
+              <label
+                style="color: white; margin-top: 10px"
+                *ngIf="isLocalServer"
+                for="flexCheckDefault"
+              >
+                Current Status: Local Server
+              </label>
+              <label
+                style="color: white; margin-top: 10px"
+                *ngIf="!isLocalServer"
+                for="flexCheckDefault"
+              >
+                Current Status: Firebase Server
+              </label> -->
+            </div>
+          </ng-container>
+        </ng-container>
+        <ng-template #anonymousUser>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </nav>
+  
