@@ -10,9 +10,12 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
+import { WetapUsersComponent } from './wetap-users/wetap-users.component';
+import { WetapLocationsComponent } from './wetap-locations/wetap-locations.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, LoginComponent],
+  declarations: [AppComponent, NavbarComponent, LoginComponent, HomeComponent, WetapUsersComponent, WetapLocationsComponent],
   imports: [
     FormsModule,
     BrowserModule,

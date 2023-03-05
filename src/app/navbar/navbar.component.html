@@ -22,22 +22,12 @@
         <ng-container *ngIf="adminUser; else anonymousUser">
           <ng-container *ngIf="adminUser.isAdmin">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/candidate">Candidates</a>
+              <a class="nav-link" routerLink="/wetap-locations">All Location</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/question/Paper">Question Paper</a>
+              <a class="nav-link" routerLink="/wetap-users">All Users</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/manage/bulk-upload">Bulk Upload</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/manage/app">Manage App</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/manage/manage-scheme"
-                >Manage Scheme</a
-              >
-            </li>
+           
             <li class="nav-item">
               <a class="nav-link" (click)="logout()" routerLink="">Logout</a>
             </li>

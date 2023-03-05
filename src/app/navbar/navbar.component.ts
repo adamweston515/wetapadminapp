@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { AdminUser } from '../model/adminUser';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +13,11 @@ export class NavbarComponent {
   adminUser!: AdminUser | null;
   // isLocalServer: boolean;
 
-  constructor(private auth: AuthService) {
+  constructor(
+    private auth: AuthService,
+    private location: Location,
+    private router: Router
+  ) {
     this.auth.adminUser$.subscribe((user) => {
       console.log(user);
       this.adminUser = user;
@@ -20,5 +26,7 @@ export class NavbarComponent {
 
   logout() {
     this.auth.Logout();
+    // this.router.navigate(['/login']);
+    window.location.replace('/login');
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, switchMap, of } from 'rxjs';
+import { Observable, switchMap, of, filter, map } from 'rxjs';
 import { AdminUser } from './model/adminUser';
 import { UserService } from './user.service';
 
@@ -9,14 +9,19 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  user$: Observable<firebase.default.User | null>;
+  user$: Observable<firebase.default.User>;
+  // isLocalServer: boolean;
 
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
     private afAuth: AngularFireAuth
   ) {
-    this.user$ = afAuth.authState;
+    // this.user$ = afAuth.authState;
+    this.user$ = afAuth.authState.pipe(
+      filter((user) => user !== null),
+      map((user) => user as firebase.default.User)
+    );
   }
 
   login(email: string, password: string) {
@@ -29,14 +34,11 @@ export class AuthService {
     this.afAuth.signOut();
   }
 
-  get adminUser$(): Observable<AdminUser | null> {
+  get adminUser$(): Observable<AdminUser> {
     return this.user$.pipe(
       switchMap((user) => {
-        if (user) {
-          const c = this.userService.get(user.uid);
-          return c;
-        }
-        return of(null);
+        const c = this.userService.get(user.uid);
+        return c;
       })
     );
   }
