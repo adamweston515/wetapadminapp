@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/wetap-admin",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

@@ -16,7 +16,7 @@ export class SharedFeatureService {
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(jsonData);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-    XLSX.writeFile(wb, 'Medhavi_Export.xlsx');
+    XLSX.writeFile(wb, 'Wetap_Export.xlsx');
   }
 
   removeUndefined(object: any) {

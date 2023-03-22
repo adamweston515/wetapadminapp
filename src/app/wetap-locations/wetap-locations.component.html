@@ -1,7 +1,17 @@
-<p>Fetch All Marked Location</p>
+<hr>
+<p style="font-weight: bold;">Fetch All Marked Location</p>
 <button
 (click)="exportLocation()"
 class="btn btn-primary btn-sm m-2"
 >
 All Location
 </button>
+<br/>
+<hr>
+<p style="font-weight: bold;">Upload Locations From Excel <a href="https://firebasestorage.googleapis.com/v0/b/wetap-b5c3e.appspot.com/o/Location_Template.xlsx?alt=media&token=7c8d73b4-be63-49c0-8cb7-a5c9828f9ed3">(Download upload Excel template)</a> </p>
+<input type="file" (change)="fileChangeListener($event)">
+
+<button class="btn btn-primary btn-sm m-2" (click)="importLocation()">Upload Location Excel</button>
+<hr>
+
+
